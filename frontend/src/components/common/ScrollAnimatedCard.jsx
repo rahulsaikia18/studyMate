@@ -39,17 +39,17 @@ export default function ScrollAnimatedCard({
   const animationStateClass = isVisible
     ? 'translate-x-0 translate-y-0 opacity-100'
     : isLeft
-    ? '-translate-x-14 md:translate-x-0 md:translate-y-14 opacity-0'
-    : 'translate-x-14 md:translate-x-0 md:translate-y-14 opacity-0';
+    ? '-translate-x-6 md:translate-x-0 md:translate-y-12 opacity-0'
+    : 'translate-x-6 md:translate-x-0 md:translate-y-12 opacity-0';
 
   // Stagger delay for desktop cards
-  const desktopDelay = `${(index % 3) * 120}ms`;
+  const desktopDelay = `${(index % 3) * 100}ms`;
 
   return (
     <div
       ref={domRef}
       style={{
-        transitionDuration: '750ms',
+        transitionDuration: '650ms',
         transitionDelay: isVisible ? desktopDelay : '0ms',
       }}
       className={`transition-all ease-out transform will-change-transform ${animationStateClass} ${className}`}

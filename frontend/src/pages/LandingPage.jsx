@@ -129,7 +129,7 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-black flex flex-col justify-between font-mono">
+    <div className="min-h-screen bg-white text-black flex flex-col justify-between font-mono w-full max-w-full overflow-x-hidden">
       {/* Top International Strip */}
       <div className="border-b border-black bg-zinc-100 py-1.5 px-4 sm:px-6 lg:px-8 flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-zinc-600">
         <span>ISSUE 2026 // ACADEMIC COGNITION</span>
@@ -181,7 +181,6 @@ export default function LandingPage() {
                     onClick={() => setGuideModalOpen(true)}
                     className="px-6 py-4 border border-black bg-white text-black text-xs font-mono font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-zinc-100 transition-colors"
                   >
-                    <Sparkles className="w-4 h-4 text-swiss-red" />
                     <span>Watch How It Works</span>
                   </button>
                 </>
@@ -197,7 +196,7 @@ export default function LandingPage() {
       </section>
 
       {/* Structured Feature Matrix with Mobile Left-Right Scroll & Hover Inversion */}
-      <section className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-16 overflow-hidden">
         <div className="flex items-baseline justify-between border-b border-black pb-4 mb-6">
           <div>
             <span className="font-mono text-xs font-bold text-swiss-red uppercase tracking-widest block">
@@ -213,7 +212,7 @@ export default function LandingPage() {
         </div>
 
         {/* Animated Cards Grid: Alternating Left/Right on Mobile, Bottom-Up on Desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 overflow-hidden py-1">
           {features.map((feat, idx) => (
             <ScrollAnimatedCard key={feat.index} index={idx} className="h-full">
               <div className="h-full border border-black p-6 sm:p-8 flex flex-col justify-between bg-white hover:bg-black hover:text-white transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">

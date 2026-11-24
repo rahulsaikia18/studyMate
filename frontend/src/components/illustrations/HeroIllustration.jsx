@@ -11,7 +11,7 @@ export default function HeroIllustration() {
       </div>
 
       {/* SVG Canvas Schematic */}
-      <div className="relative aspect-[16/9] w-full border border-black bg-zinc-50 overflow-hidden flex items-center justify-center">
+      <div className="relative min-h-[440px] sm:min-h-0 sm:aspect-[16/9] w-full border border-black bg-zinc-50 overflow-hidden flex items-center justify-center">
         {/* Animated Background Grid Lines */}
         <div
           className="absolute inset-0 opacity-15"

@@ -3,9 +3,22 @@
 @tailwind utilities;
 
 @layer base {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+  }
+
   body {
     @apply text-swiss-black bg-swiss-paper font-sans antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  #root {
+    max-width: 100%;
+    overflow-x: hidden;
+    width: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
