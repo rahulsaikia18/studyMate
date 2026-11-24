@@ -62,9 +62,9 @@ export default function OnboardingGuideModal({ isOpen, onClose }) {
           </div>
           <div className="space-y-1 font-sans text-xs text-black">
             <h5 className="font-black text-sm uppercase"># Binary Search Trees</h5>
-            <p className="text-zinc-600">• Balance Factor must remain in {-1, 0, 1}</p>
+            <p className="text-zinc-600">• Balance Factor must remain in {'{-1, 0, 1}'}</p>
             <div className="p-2 border border-black bg-zinc-50 text-[11px] font-mono">
-              $$\text{BalanceFactor}(N) = h(L) - h(R)$$
+              {'BF(N) = Height(Left) - Height(Right)'}
             </div>
           </div>
         </div>
