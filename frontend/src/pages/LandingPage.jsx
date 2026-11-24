@@ -276,31 +276,75 @@ export default function LandingPage() {
           </h2>
         </div>
 
-        <div className="border border-black overflow-x-auto bg-white">
-          <table className="w-full text-left text-xs border-collapse">
-            <thead>
-              <tr className="border-b border-black bg-zinc-100 font-bold uppercase text-black">
-                <th className="p-4 border-r border-black w-1/4">CAPABILITY / WORKFLOW</th>
-                <th className="p-4 border-r border-black w-3/8 text-zinc-500">TRADITIONAL METHODS</th>
-                <th className="p-4 w-3/8 text-black bg-zinc-200/50">STUDYMATE ACADEMIC PLATFORM</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-black">
-              {comparison.map((item, idx) => (
-                <tr key={idx} className="hover:bg-zinc-50/80 transition-colors">
-                  <td className="p-4 font-bold uppercase border-r border-black">{item.capability}</td>
-                  <td className="p-4 text-zinc-600 font-sans border-r border-black flex items-start gap-2">
-                    <X className="w-4 h-4 text-swiss-red flex-shrink-0 mt-0.5" />
-                    <span>{item.traditional}</span>
-                  </td>
-                  <td className="p-4 text-black font-sans font-bold bg-zinc-50 flex items-start gap-2">
-                    <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5 stroke-[3]" />
-                    <span>{item.studymate}</span>
-                  </td>
+        {/* Responsive Swiss Comparison Matrix */}
+        <div className="border border-black bg-white overflow-hidden">
+          {/* Desktop / Tablet Table View */}
+          <div className="hidden sm:block overflow-x-auto">
+            <table className="w-full text-left text-xs border-collapse table-fixed">
+              <thead>
+                <tr className="border-b border-black bg-zinc-100 font-mono font-bold uppercase text-black">
+                  <th className="p-4 border-r border-black w-[28%]">CAPABILITY / WORKFLOW</th>
+                  <th className="p-4 border-r border-black w-[36%] text-zinc-500">TRADITIONAL METHODS</th>
+                  <th className="p-4 w-[36%] text-black bg-zinc-200/60 font-black">STUDYMATE ACADEMIC PLATFORM</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-black font-sans text-xs">
+                {comparison.map((item, idx) => (
+                  <tr key={idx} className="hover:bg-zinc-50/80 transition-colors">
+                    <td className="p-4 font-mono font-bold uppercase border-r border-black align-top text-black">
+                      {item.capability}
+                    </td>
+                    <td className="p-4 text-zinc-600 border-r border-black align-top">
+                      <div className="flex items-start gap-2.5">
+                        <X className="w-4 h-4 text-swiss-red flex-shrink-0 mt-0.5" />
+                        <span className="leading-relaxed">{item.traditional}</span>
+                      </div>
+                    </td>
+                    <td className="p-4 text-black font-bold bg-zinc-50/70 align-top">
+                      <div className="flex items-start gap-2.5">
+                        <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5 stroke-[3]" />
+                        <span className="leading-relaxed">{item.studymate}</span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile Card-by-Card View (Perfect fit on small screens) */}
+          <div className="sm:hidden divide-y divide-black font-mono text-xs">
+            {comparison.map((item, idx) => (
+              <div key={idx} className="p-4 space-y-3 bg-white">
+                <div className="font-bold uppercase text-black border-b border-zinc-200 pb-1.5 flex items-center justify-between">
+                  <span>{item.capability}</span>
+                  <span className="text-[10px] text-zinc-400">#{idx + 1}</span>
+                </div>
+
+                {/* Traditional */}
+                <div className="p-3 bg-red-50/50 border border-zinc-200 space-y-1">
+                  <span className="text-[10px] uppercase font-bold text-swiss-red flex items-center gap-1">
+                    <X className="w-3.5 h-3.5" />
+                    Traditional Method:
+                  </span>
+                  <p className="text-xs font-sans text-zinc-700 leading-snug pl-4">
+                    {item.traditional}
+                  </p>
+                </div>
+
+                {/* StudyMate */}
+                <div className="p-3 bg-zinc-50 border border-black space-y-1">
+                  <span className="text-[10px] uppercase font-bold text-black flex items-center gap-1">
+                    <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[3]" />
+                    StudyMate Platform:
+                  </span>
+                  <p className="text-xs font-sans text-black font-bold leading-snug pl-4">
+                    {item.studymate}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
