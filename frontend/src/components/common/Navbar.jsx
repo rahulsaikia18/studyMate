@@ -41,22 +41,22 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-black select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
         {/* Brand Section */}
-        <Link to={isAuthenticated ? '/dashboard' : '/'} className="flex items-center gap-3 group">
-          <div className="w-8 h-8 bg-black text-white font-mono font-bold text-base flex items-center justify-center transition-transform group-hover:scale-95">
+        <Link to={isAuthenticated ? '/dashboard' : '/'} className="flex items-center gap-2 sm:gap-3 group shrink-0">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 bg-black text-white font-mono font-bold text-sm sm:text-base flex items-center justify-center transition-transform group-hover:scale-95 shrink-0">
             S
           </div>
           <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="font-extrabold tracking-tight text-lg text-black uppercase">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="font-extrabold tracking-tight text-base sm:text-lg text-black uppercase whitespace-nowrap">
                 StudyMate
               </span>
-              <span className="text-[10px] font-mono font-bold px-1.5 py-0.2 bg-black text-white uppercase">
+              <span className="text-[9px] sm:text-[10px] font-mono font-bold px-1.5 py-0.2 bg-black text-white uppercase shrink-0">
                 AI
               </span>
             </div>
-            <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest hidden sm:inline">
+            <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest hidden md:inline">
               International Academic System
             </span>
           </div>
@@ -98,7 +98,7 @@ export default function Navbar() {
         )}
 
         {/* Right Section */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           {isAuthenticated ? (
             <>
               {/* Daily Streak Indicator */}
@@ -165,22 +165,22 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
               <Link
                 to="/community"
-                className="hidden sm:inline-flex text-xs font-mono font-bold uppercase tracking-wider text-black px-3 py-1.5 hover:underline"
+                className="hidden md:inline-flex text-xs font-mono font-bold uppercase tracking-wider text-black px-3 py-1.5 hover:underline whitespace-nowrap"
               >
                 Notes Library
               </Link>
               <Link
                 to="/login"
-                className="text-xs font-mono font-bold uppercase tracking-wider text-black border border-black px-3.5 py-1.5 hover:bg-zinc-100 transition-colors"
+                className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-black border border-black px-2.5 sm:px-3.5 py-1.5 hover:bg-zinc-100 transition-colors whitespace-nowrap inline-flex items-center justify-center shrink-0"
               >
                 Sign In
               </Link>
               <Link
                 to="/register"
-                className="text-xs font-mono font-bold uppercase tracking-wider text-white bg-black px-4 py-1.5 hover:bg-zinc-800 transition-colors"
+                className="text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider text-white bg-black px-3 sm:px-4 py-1.5 hover:bg-zinc-800 transition-colors whitespace-nowrap inline-flex items-center justify-center shrink-0"
               >
                 Register
               </Link>

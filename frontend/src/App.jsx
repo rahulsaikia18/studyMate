@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 
 import Navbar from './components/common/Navbar.jsx';
 import Footer from './components/common/Footer.jsx';
+import ScrollToTop from './components/common/ScrollToTop.jsx';
 
 import LandingPage from './pages/LandingPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
@@ -140,6 +141,7 @@ export default function App() {
         </main>
 
         <Footer />
+        <ScrollToTop />
       </div>
     </Router>
   );
