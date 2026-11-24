@@ -1,30 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProfile } from '../redux/slices/authSlice.js';
 import { fetchNotes, deleteNote, toggleShareNote } from '../redux/slices/notesSlice.js';
 import { fetchStudyPlan, toggleDailyGoal } from '../redux/slices/plannerSlice.js';
 import NoteCard from '../components/notes/NoteCard.jsx';
 import ExplainModal from '../components/ai/ExplainModal.jsx';
+import OnboardingGuideModal from '../components/common/OnboardingGuideModal.jsx';
 import {
   Plus,
   ArrowRight,
   Check,
+  HelpCircle,
 } from 'lucide-react';
 
 export default function DashboardPage() {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { user, stats } = useSelector((state) => state.auth);
   const { notes } = useSelector((state) => state.notes);
   const { plan } = useSelector((state) => state.planner);
 
   const [explainModalOpen, setExplainModalOpen] = useState(false);
+  const [guideModalOpen, setGuideModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchProfile());
     dispatch(fetchNotes());
     dispatch(fetchStudyPlan());
-  }, [dispatch]);
+
+    // Auto-launch guide if arriving from registration
+    if (location.state?.showGuide) {
+      setGuideModalOpen(true);
+    }
+  }, [dispatch, location.state]);
 
   const handleDownload = (noteId) => {
     window.open(`/api/notes/${noteId}/download`, '_blank');
@@ -68,8 +77,15 @@ export default function DashboardPage() {
               <span>Intake New Notes</span>
             </Link>
             <button
+              onClick={() => setGuideModalOpen(true)}
+              className="px-4 py-3 border border-black bg-zinc-100 hover:bg-black hover:text-white text-black text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1.5"
+            >
+              <HelpCircle className="w-3.5 h-3.5 text-swiss-red" />
+              <span>How It Works Guide</span>
+            </button>
+            <button
               onClick={() => setExplainModalOpen(true)}
-              className="px-5 py-3 border border-black bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-zinc-100 transition-colors"
+              className="px-4 py-3 border border-black bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-zinc-100 transition-colors"
             >
               Explain Text
             </button>
@@ -250,6 +266,12 @@ export default function DashboardPage() {
       <ExplainModal
         isOpen={explainModalOpen}
         onClose={() => setExplainModalOpen(false)}
+      />
+
+      {/* Onboarding Walkthrough Guide Modal */}
+      <OnboardingGuideModal
+        isOpen={guideModalOpen}
+        onClose={() => setGuideModalOpen(false)}
       />
     </div>
   );

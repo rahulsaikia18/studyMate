@@ -20,7 +20,7 @@ export default function RegisterPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/dashboard');
+      navigate('/dashboard', { state: { showGuide: true } });
     }
     return () => {
       dispatch(clearAuthError());
