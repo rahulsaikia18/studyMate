@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-swiss-black bg-swiss-paper font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-extrabold text-swiss-black;
+  }
+}
+
+/* International Typographic Style (Swiss Grid) classes */
+.swiss-border {
+  border: 1px solid #000000;
+}
+
+.swiss-border-b {
+  border-bottom: 1px solid #000000;
+}
+
+.swiss-border-t {
+  border-top: 1px solid #000000;
+}
+
+.swiss-border-r {
+  border-right: 1px solid #000000;
+}
+
+.swiss-border-l {
+  border-left: 1px solid #000000;
+}
+
+.swiss-hairline {
+  border-color: #e2e8f0;
+}
+
+.swiss-hairline-dark {
+  border-color: #0a0a0a;
+}
+
+/* 3D Flashcard Flip */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Minimalist scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #000000;
+}
