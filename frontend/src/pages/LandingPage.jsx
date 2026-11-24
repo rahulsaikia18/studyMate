@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import HeroIllustration from '../components/illustrations/HeroIllustration.jsx';
 import MultilingualOCRIllustration from '../components/illustrations/MultilingualOCRIllustration.jsx';
 import OnboardingGuideModal from '../components/common/OnboardingGuideModal.jsx';
+import ScrollAnimatedCard from '../components/common/ScrollAnimatedCard.jsx';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -211,35 +212,34 @@ export default function LandingPage() {
           </span>
         </div>
 
-        {/* Mobile Left-Right Animated Scroll Container & Desktop Grid */}
-        <div className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-0 overflow-x-auto pb-4 md:pb-0 snap-x snap-mandatory md:snap-none md:border-t md:border-l md:border-black scrollbar-none">
-          {features.map((feat) => (
-            <div
-              key={feat.index}
-              className="min-w-[85vw] sm:min-w-[320px] md:min-w-0 snap-center border border-black md:border-t-0 md:border-l-0 md:border-r md:border-b p-6 sm:p-8 flex flex-col justify-between bg-white hover:bg-black hover:text-white transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
-            >
-              <div>
-                <div className="flex items-center justify-between text-xs mb-4">
-                  <span className="font-black text-base text-black group-hover:text-swiss-red transition-colors">
-                    {feat.index}
-                  </span>
-                  <span className="px-2 py-0.5 bg-black text-white group-hover:bg-swiss-red group-hover:text-white text-[10px] font-bold uppercase tracking-wider transition-colors">
-                    {feat.tag}
-                  </span>
+        {/* Animated Cards Grid: Alternating Left/Right on Mobile, Bottom-Up on Desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {features.map((feat, idx) => (
+            <ScrollAnimatedCard key={feat.index} index={idx} className="h-full">
+              <div className="h-full border border-black p-6 sm:p-8 flex flex-col justify-between bg-white hover:bg-black hover:text-white transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                <div>
+                  <div className="flex items-center justify-between text-xs mb-4">
+                    <span className="font-black text-base text-black group-hover:text-swiss-red transition-colors">
+                      {feat.index}
+                    </span>
+                    <span className="px-2 py-0.5 bg-black text-white group-hover:bg-swiss-red group-hover:text-white text-[10px] font-bold uppercase tracking-wider transition-colors">
+                      {feat.tag}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold uppercase tracking-tight text-black group-hover:text-white mb-3 leading-snug font-sans transition-colors">
+                    {feat.title}
+                  </h3>
+                  <p className="text-xs text-zinc-600 group-hover:text-zinc-300 leading-relaxed font-sans font-normal transition-colors">
+                    {feat.desc}
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold uppercase tracking-tight text-black group-hover:text-white mb-3 leading-snug font-sans transition-colors">
-                  {feat.title}
-                </h3>
-                <p className="text-xs text-zinc-600 group-hover:text-zinc-300 leading-relaxed font-sans font-normal transition-colors">
-                  {feat.desc}
-                </p>
-              </div>
 
-              <div className="pt-6 mt-6 border-t border-zinc-200 group-hover:border-zinc-800 flex items-center justify-between text-xs font-bold uppercase transition-colors">
-                <span className="text-zinc-400 group-hover:text-zinc-300">Active Standard</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <div className="pt-6 mt-6 border-t border-zinc-200 group-hover:border-zinc-800 flex items-center justify-between text-xs font-bold uppercase transition-colors">
+                  <span className="text-zinc-400 group-hover:text-zinc-300">Active Standard</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
               </div>
-            </div>
+            </ScrollAnimatedCard>
           ))}
         </div>
       </section>
